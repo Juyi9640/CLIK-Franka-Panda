@@ -5,9 +5,11 @@ These methods are: 1. Jacobian transpose method; 2. Pseudoinverse method; 3. Dam
 ### System requirements
 [Ubuntu 20.04][1] and [ROS Noetic][2]
 
-[1]: https://releases.ubuntu.com/focal/                                  "Ubuntu 20.04"
-[2]: http://wiki.ros.org/noetic/Installation/Ubuntu                      "ROS Noetic"
-[3]: https://github.com/Juyi9640/CLIK-Franka-Panda/tree/main/src         "src"
+[1]: https://releases.ubuntu.com/focal/                                          "Ubuntu 20.04"
+[2]: http://wiki.ros.org/noetic/Installation/Ubuntu                              "ROS Noetic"
+[3]: https://github.com/Juyi9640/CLIK-Franka-Panda/tree/main/src                 "src"
+[4]: https://github.com/Juyi9640/CLIK-Franka-Panda/blob/main/CMakeLists.txt      "CMakeLists"
+[5]: https://github.com/rickstaa/panda-gazebo/tree/noetic                        "panda_gazebo"
 
 ### Major dependencies
 
@@ -96,7 +98,52 @@ catkin_create_pkg panda_clik_control roscpp sensor_msgs
 cd panda_clik_control
 cd src
 ```
-Add the source files (.cpp files) from this folder [src][3] in your panda_clik_control/src directory.
+Copy the source files (.cpp files) from here [src][3] to your panda_clik_control/src directory.<br />
+Replace the 'CMakeLists.txt' which is auto-generated with command catkin_create_pkg before with this file [CMakeLists.txt][4] to include necessary dependencies and build instructions. <br />
+Build the package:
+```bash
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
+```
+### 3. Build Panda-gazebo from source inside catkin_ws folder
+To move the panda arm inside Gazebo, we need to build [panda_gazebo][5] from source to utilize its features:
+```bash
+cd ~/catkin_ws/src
+git clone --recurse-submodules https://github.com/rickstaa/panda-gazebo.git
+cd ..
+catkin_make
+source devel/setup.bash
+```
+## How to run the code
+
+### Part 1. Read the pose using end_effector_orientation node
+Open a terminal and input:
+```bash
+cd ~/catkin_ws
+source devel/setup.bash
+roslaunch franka_gazebo panda.launch controller:=cartesian_impedance_example_controller     rviz:=true
+```
+Open another terminal and input:
+```bash
+source devel/setup.bash
+rosrun panda_clik_control end_effector_orientation
+```
+You have to manually copy the orientation matrix and translation vector printed here and paste it inside source files (.cpp files) to replace the previous one, and compile panda_clik_control again to have it working.
+
+### Part 2. CLIK Control
+Open a terminal and input:
+```bash
+cd ~/catkin_ws
+source devel/setup.bash
+roslaunch panda_gazebo start_simulation.launch
+```
+Open another terminal and input:
+```bash
+source devel/setup.bash
+rosrun panda_clik_control 1_JacobianTranspose
+```
+You can change the 1_JacobianTranspose to 2_Pseudoinverse or 3_DampedLeastSquares to experiment different IK methods.
 
 
 
