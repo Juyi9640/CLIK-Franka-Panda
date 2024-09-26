@@ -16,7 +16,6 @@ These methods are: 1. Jacobian transpose method; 2. Pseudoinverse method; 3. Dam
 - [Gazebo](https://gazebosim.org/home)
 - [RViz](http://wiki.ros.org/rviz)
 
-## Implementation details
 
 ### Posture generation
 We define a custom pose (which contains end-effector’s position and orientation) for the
@@ -63,3 +62,44 @@ qualitative comparison between the results: <br />
   <img src="gif folder/32.gif" width="300" alt="Third GIF" />
 
 </div>
+
+## How to Install
+
+### 1. Install Dependencies
+Install Franka description and control packages:
+```bash
+sudo apt-get install ros-noetic-franka-description ros-noetic-franka-ros
+sudo apt install ros-noetic-libfranka ros-noetic-franka-ros
+```
+To start a example of franka panda in Gazebo:
+```bash
+roslaunch franka_gazebo panda.launch controller:=cartesian_impedance_example_controller     rviz:=true
+```
+Install Pinocchio library:
+```bash
+sudo apt install ros-noetic-pinocchio
+```
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
