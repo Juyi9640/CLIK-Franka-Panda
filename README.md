@@ -11,6 +11,21 @@ Ubuntu 20.04 and ROS Noetic
 - [panda-gazebo](https://github.com/rickstaa/panda-gazebo/tree/noetic)
 - [franka_ros](https://frankaemika.github.io/docs/index.html)
 
+## Implementation details
+
+### Posture generation
+We define a custom pose (which contains end-effector’s position and orientation) for the
+robot by dragging the marker (that locates at robot’s end-effector) in RViz to a specific pose and we implement a ROS node to extract the orientation and position values of this pose at real-time.
+```bash
+roslaunch franka_gazebo panda.launch controller:=cartesian_impedance_example_controller     rviz:=true
+```
+The command above opens Gazebo and RViz at the same time, we can then drag the marker to move the robot. Now open another window in terminal and input:
+```bash
+rosrun panda_clik_control end_effector_orientation
+```
+The orientation matrix and translation vector appears.
+
+
 
 
 ### Results
