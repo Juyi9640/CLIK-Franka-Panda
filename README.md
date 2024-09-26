@@ -5,8 +5,9 @@ These methods are: 1. Jacobian transpose method; 2. Pseudoinverse method; 3. Dam
 ### System requirements
 [Ubuntu 20.04][1] and [ROS Noetic][2]
 
-[1]: https://releases.ubuntu.com/focal/                "Ubuntu 20.04"
-[2]: http://wiki.ros.org/noetic/Installation/Ubuntu    "ROS Noetic"
+[1]: https://releases.ubuntu.com/focal/                                  "Ubuntu 20.04"
+[2]: http://wiki.ros.org/noetic/Installation/Ubuntu                      "ROS Noetic"
+[3]: https://github.com/Juyi9640/CLIK-Franka-Panda/tree/main/src         "src"
 
 ### Major dependencies
 
@@ -95,7 +96,8 @@ catkin_create_pkg panda_clik_control roscpp sensor_msgs
 cd panda_clik_control
 cd src
 ```
-Add the 
+Add the source files (.cpp files) from this folder [src][3] in your panda_clik_control/src directory.
+
 
 
 
