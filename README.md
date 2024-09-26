@@ -49,7 +49,7 @@ The orientation matrix and translation vector appears as follows:
 
 Given the same goal pose (position and orientation extracted from RViz), the following images show the 
 qualitative comparison between the results: <br />
-(left: Jacobian transpose; right: Pseudoinverse; bottom: Damped least squares)
+(first: Jacobian transpose; second: Pseudoinverse; third: Damped least squares)
 
 <div align="center">
   <p style="text-align:center;">IKs with the first goal pose</p>
