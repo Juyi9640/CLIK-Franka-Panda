@@ -120,7 +120,7 @@ int main(int argc, char **argv)
     ros::Duration(1.0).sleep();
 
     // Load the robot model from URDF with panda hand
-    std::string urdf_path = "/path/to/your/urdf/panda_with_hand.urdf";
+    std::string urdf_path = "/path/to/your/urdf/panda.urdf";
 
     pinocchio::Model model;
     pinocchio::urdf::buildModel(urdf_path, model);
