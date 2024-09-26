@@ -87,12 +87,24 @@ The ‘.xacro’ file is a format used to simplify the creation of complex URDF 
 ```bash
 rosrun xacro xacro panda.urdf.xacro > panda.urdf
 ```
-
-
+### 2. Create the clik control ROS package
+Create a ROS package: panda_clik_control
+```bash
+cd ~/catkin_ws/src
+catkin_create_pkg panda_clik_control roscpp sensor_msgs
+cd panda_clik_control
+cd src
+```
+Add the 
 
 
 
         
+
+
+
+
+
 
 
 
