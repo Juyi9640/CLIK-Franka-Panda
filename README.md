@@ -79,6 +79,15 @@ Install Pinocchio library:
 ```bash
 sudo apt install ros-noetic-pinocchio
 ```
+After installing the ros-noetic-franka-description, the robot arm panda.urdf.xacro file is typically located in the ‘share’ directory of the package:
+```bash
+opt/ros/noetic/share/franka_description/robots/panda/panda.urdf.xacro
+```
+The ‘.xacro’ file is a format used to simplify the creation of complex URDF file. Before using this file, it must be converted into a standart ‘.urdf’ file: 
+```bash
+rosrun xacro xacro panda.urdf.xacro > panda.urdf
+```
+
 
 
 
